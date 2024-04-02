@@ -9,9 +9,9 @@ describe('xkucharp-ambulance-employees-list', () => {
     });
 
     const wlList = page.rootInstance as XkucharpAmbulanceEmployeesList;
-    const expectedPatients = wlList?.employees?.length
+    const expectedEmployees = wlList?.employees?.length;
 
     const items = page.root.shadowRoot.querySelectorAll("md-list-item");
-    expect(items.length).toEqual(expectedPatients);
+    expect(items.length).toEqual(expectedEmployees);
   });
 });
