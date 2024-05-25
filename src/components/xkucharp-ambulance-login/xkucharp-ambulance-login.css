@@ -1,0 +1,48 @@
+:host {
+  display: block;
+  margin: 0 auto;
+  width: 50%;
+  padding: 16px 50px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+.avatar-icon {
+  color: var(--sl-color-neutral-500); /* Adjust color as needed */
+  margin-bottom: 10px;
+  display: block;
+  text-align: center;
+}
+
+.avatar-icon md-icon {
+  width: auto;
+  height: auto;
+  font-size: 90px;
+}
+
+h2 {
+  margin: 0;
+  text-align: center;
+}
+
+sl-card {
+  padding: 20px;
+}
+
+sl-button {
+  display: block;
+  margin-top: 10px;
+}
+
+md-filled-text-field {
+  width: 100%;
+  display: block;
+  margin: 20px 0;
+}
+
+.error {
+  margin: auto;
+  color: red;
+  font-size: 2rem;
+  font-weight: 900;
+  text-align: center;
+}

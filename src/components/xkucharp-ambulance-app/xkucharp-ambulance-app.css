@@ -1,0 +1,12 @@
+:host {
+  display: block;
+}
+
+#my-navbar {
+  position: sticky;
+  background-color: aquamarine;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+  margin: 0;
+  width: 100%;
+  z-index: 1000;
+}

@@ -9,7 +9,7 @@ describe('xkucharp-ambulance-employees-list', () => {
     });
 
     const wlList = page.rootInstance as XkucharpAmbulanceEmployeesList;
-    const expectedEmployees = wlList?.employees?.length;
+    const expectedEmployees = wlList?.userLists?.length;
 
     const items = page.root.shadowRoot.querySelectorAll("md-list-item");
     expect(items.length).toEqual(expectedEmployees);

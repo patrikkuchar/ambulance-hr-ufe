@@ -1,0 +1,3 @@
+apis:
+  api/ambulance-hr.openapi.yaml:
+    alias: "hr-management-api"

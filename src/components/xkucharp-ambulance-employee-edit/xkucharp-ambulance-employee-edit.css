@@ -1,0 +1,73 @@
+:host {
+  display: block;
+  margin: 0 auto;
+  width: 50%;
+  padding: 16px 50px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+.avatar-icon {
+  color: var(--sl-color-neutral-500); /* Adjust color as needed */
+  margin-bottom: 10px;
+  display: block;
+  text-align: center;
+}
+
+.avatar-icon md-icon {
+  width: auto;
+  height: auto;
+  font-size: 90px;
+}
+
+h2 {
+  margin: 0;
+  text-align: center;
+}
+
+sl-card {
+  padding: 20px;
+}
+
+sl-button {
+  display: block;
+  margin-top: 10px;
+}
+
+.documents {
+  margin: 10px 20px;
+}
+
+.documents md-list-item {
+  background-color: aliceblue;
+  margin: 10px 0;
+}
+
+.document-item {
+  margin: 10px 0;
+  padding: 10px;
+  border: 1px solid var(--sl-color-neutral-300);
+  border-radius: 5px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.document-item h3 {
+  margin: 0;
+  text-align: center;
+}
+
+.document-item p {
+  padding: 5px;
+  text-align: justify;
+}
+
+.button-row {
+  display: flex;
+  flex-direction: row;
+  gap: 10px; /* Optional: Adds some space between the buttons */
+}
+
+.pointer-cursor {
+  cursor: pointer;
+}
