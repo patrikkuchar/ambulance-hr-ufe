@@ -86,7 +86,8 @@ export class XkucharpAmbulanceApp {
                                            onLogged-in={(ev: CustomEvent<string>) => navigate('/edit/' + ev.detail)}></xkucharp-ambulance-login>
         case "create":
           return <xkucharp-ambulance-employee-create apiBase={this.apiBase}
-                                            onCreate-clicked={() => navigate('/list')}></xkucharp-ambulance-employee-create>
+                                            onCreate-clicked={() => navigate('/list')}
+                                            onBack-clicked={() => navigate('/list')}></xkucharp-ambulance-employee-create>
         case "edit":
           return <xkucharp-ambulance-employee-edit apiBase={this.apiBase}
                                                    employeeId={editId}

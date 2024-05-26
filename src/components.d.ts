@@ -51,6 +51,7 @@ declare global {
     };
     interface HTMLXkucharpAmbulanceEmployeeCreateElementEventMap {
         "create-clicked": string;
+        "back-clicked": string;
     }
     interface HTMLXkucharpAmbulanceEmployeeCreateElement extends Components.XkucharpAmbulanceEmployeeCreate, HTMLStencilElement {
         addEventListener<K extends keyof HTMLXkucharpAmbulanceEmployeeCreateElementEventMap>(type: K, listener: (this: HTMLXkucharpAmbulanceEmployeeCreateElement, ev: XkucharpAmbulanceEmployeeCreateCustomEvent<HTMLXkucharpAmbulanceEmployeeCreateElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
@@ -135,6 +136,7 @@ declare namespace LocalJSX {
     }
     interface XkucharpAmbulanceEmployeeCreate {
         "apiBase"?: string;
+        "onBack-clicked"?: (event: XkucharpAmbulanceEmployeeCreateCustomEvent<string>) => void;
         "onCreate-clicked"?: (event: XkucharpAmbulanceEmployeeCreateCustomEvent<string>) => void;
     }
     interface XkucharpAmbulanceEmployeeEdit {

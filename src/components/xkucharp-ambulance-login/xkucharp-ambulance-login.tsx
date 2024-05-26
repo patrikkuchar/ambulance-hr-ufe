@@ -15,6 +15,7 @@ export class XkucharpAmbulanceLogin {
   @State() entry: LoginEntry;
   @State() private isValid = false;
   @State() private loginFailed = false;
+  @State() private webApiNotWorking = false;
 
   private formElement: HTMLFormElement;
 
@@ -36,7 +37,9 @@ export class XkucharpAmbulanceLogin {
     } catch (err: any) {
       if (err.response && err.response.status === 404) {
         this.loginFailed = true;
+        return;
       }
+      this.webApiNotWorking = true;
     }
   }
 
@@ -57,6 +60,7 @@ export class XkucharpAmbulanceLogin {
                                     if (this.entry) {
                                       this.entry.email = this.handleInputEvent(ev)
                                       this.loginFailed = false;
+                                      this.webApiNotWorking = false;
                                     }
                                   }}>
             </md-filled-text-field>
@@ -65,6 +69,7 @@ export class XkucharpAmbulanceLogin {
               Login
             </md-filled-button>
             {this.loginFailed ? <div class="error">Wrong email address</div> : null}
+            {this.webApiNotWorking ? <div class="error">Server is not working</div> : null}
           </form>
         </sl-card>
       </Host>

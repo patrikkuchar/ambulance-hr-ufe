@@ -43,3 +43,9 @@ form{
 md-divider {
   margin-bottom: var(--_wl-editor_gap);
 }
+
+.button-row {
+  display: flex;
+  flex-direction: row;
+  gap: 10px; /* Optional: Adds some space between the buttons */
+}

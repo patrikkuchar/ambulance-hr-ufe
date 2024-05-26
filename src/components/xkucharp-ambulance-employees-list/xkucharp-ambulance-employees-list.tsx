@@ -13,6 +13,7 @@ export class XkucharpAmbulanceEmployeesList {
   @Prop() apiBase: string;
 
   @State() emptyList: boolean = false;
+  @State() private webApiNotWorking = false;
 
   userLists: UserList[];
 
@@ -24,6 +25,7 @@ export class XkucharpAmbulanceEmployeesList {
         this.emptyList = this.userLists.length === 0;
       }
     } catch (err: any) {
+      this.webApiNotWorking = true;
       // no strong dependency on conditions
     }
 
@@ -38,6 +40,7 @@ export class XkucharpAmbulanceEmployeesList {
     return (
       <Host>
         <md-list>
+          {this.webApiNotWorking ? <div class="error">Server is not working</div> : null}
           {this.emptyList ?
             <md-list-item>
               <div slot="headline">No users found. Please add some.</div>

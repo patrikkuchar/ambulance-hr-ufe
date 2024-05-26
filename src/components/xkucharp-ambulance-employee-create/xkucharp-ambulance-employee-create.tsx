@@ -8,6 +8,7 @@ import {DepartmentEnum, HRManagementApiFactory, RoleEnum, UserEntry} from "../..
 })
 export class XkucharpAmbulanceEmployeeCreate {
   @Event({ eventName: "create-clicked"}) createClicked: EventEmitter<string>;
+  @Event({ eventName: "back-clicked"}) backClicked: EventEmitter<string>;
 
   @Prop() apiBase: string = "http://localhost:8080";
 
@@ -19,6 +20,7 @@ export class XkucharpAmbulanceEmployeeCreate {
   @State() invalidPhone = false;
   @State() emailExists = false;
   @State() missingData = false;
+  @State() webApiNotWorking = false;
 
   private formElement: HTMLFormElement;
 
@@ -49,6 +51,7 @@ export class XkucharpAmbulanceEmployeeCreate {
                                     this.entry.email = this.handleInputEvent(ev)
                                     this.emailExists = false
                                     this.missingData = false
+                                    this.webApiNotWorking = false
                                   }
                                 }}>
             <md-icon slot="leading-icon">email</md-icon>
@@ -60,6 +63,7 @@ export class XkucharpAmbulanceEmployeeCreate {
                                   if (this.entry) {
                                     this.entry.name = this.handleInputEvent(ev)
                                     this.missingData = false
+                                    this.webApiNotWorking = false
                                   }
                                 }}>
             <md-icon slot="leading-icon">person</md-icon>
@@ -74,6 +78,7 @@ export class XkucharpAmbulanceEmployeeCreate {
                                     this.entry.phone = this.handleInputEvent(ev);
                                     this.invalidPhone = false
                                     this.missingData = false
+                                    this.webApiNotWorking = false
                                   }
                                 }}>
             <md-icon slot="leading-icon">phone</md-icon>
@@ -85,19 +90,29 @@ export class XkucharpAmbulanceEmployeeCreate {
 
           {this.missingData && <div class="error">Missing data</div>}
           {this.emailExists && <div class="error">User with such email already exists</div>}
-          {this.invalidPhone && <div class="error">Invalid phone format. Must starts with +4219 or 09 and 8 digits after that.<br/> Should be +421 987 654 321 or 0987 654 321</div>}
+          {this.invalidPhone &&
+            <div class="error">Invalid phone format. Must starts with +4219 or 09 and 8 digits after
+              that.<br/> Should be +421 987 654 321 or 0987 654 321</div>}
+          {this.webApiNotWorking ? <div class="error">Server is not working</div> : null}
 
-          <md-filled-button type="submit" disabled={!this.isValid}
-                            onclick={() => this.createUser()}>
-            Create
-          </md-filled-button>
+          <div class="button-row">
+            <md-filled-button type="submit" disabled={!this.isValid}
+                              onclick={() => this.createUser()}>
+              Create
+            </md-filled-button>
+            <md-filled-button type="danger" onClick={() => this.backClicked.emit()}>
+              Back
+            </md-filled-button>
+          </div>
+
+
         </form>
       </Host>
     );
   }
 
   private validatePhone(phone: string): boolean {
-     return /^(\+421|0)?\s*9\s*(\d\s*){8}$/.test(phone);
+    return /^(\+421|0)?\s*9\s*(\d\s*){8}$/.test(phone);
   }
 
   private handleInputEvent(ev: InputEvent): string {
@@ -126,6 +141,7 @@ export class XkucharpAmbulanceEmployeeCreate {
           if (this.entry) {
             this.entry.role = this.handleInputEvent(ev) as RoleEnum
             this.missingData = false
+            this.webApiNotWorking = false
           }
         }}>
         <md-icon slot="leading-icon">work</md-icon>
@@ -146,6 +162,7 @@ export class XkucharpAmbulanceEmployeeCreate {
           if (this.entry) {
             this.entry.department = this.handleInputEvent(ev) as DepartmentEnum
             this.missingData = false
+            this.webApiNotWorking = false
           }
         }}>
         <md-icon slot="leading-icon">home_health</md-icon>
@@ -175,10 +192,13 @@ export class XkucharpAmbulanceEmployeeCreate {
     } catch (err: any) {
       if (err.response && err.response.status === 400) {
         this.missingData = true;
+        return;
       }
       if (err.response && err.response.status === 409) {
         this.emailExists = true;
+        return;
       }
+      this.webApiNotWorking = true;
     }
   }
 
