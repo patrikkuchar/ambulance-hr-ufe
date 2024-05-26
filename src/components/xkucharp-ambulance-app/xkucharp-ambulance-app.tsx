@@ -86,7 +86,7 @@ export class XkucharpAmbulanceApp {
                                            onLogged-in={(ev: CustomEvent<string>) => navigate('./edit/' + ev.detail)}></xkucharp-ambulance-login>
         case "create":
           return <xkucharp-ambulance-employee-create apiBase={this.apiBase}
-                                            onCreate-clicked={() => navigate('./list')}
+                                            onCrxeate-clicked={() => navigate('./list')}
                                             onBack-clicked={() => navigate('./list')}></xkucharp-ambulance-employee-create>
         case "edit":
           return <xkucharp-ambulance-employee-edit apiBase={this.apiBase}
@@ -102,9 +102,9 @@ export class XkucharpAmbulanceApp {
     const handleOperationTypeChange = () => {
       this.operationType = this.operationType === "HR" ? "Employee" : "HR";
       if (this.operationType === "HR") {
-        navigate("/list")
+        navigate("./list")
       } else {
-        navigate("/login")
+        navigate("./login")
       }
     }
 
