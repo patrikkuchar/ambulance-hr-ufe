@@ -79,7 +79,7 @@ export class XkucharpAmbulanceApp {
       switch (element) {
         case "list":
           return <xkucharp-ambulance-employees-list apiBase={this.apiBase}
-                                                    onEdit-clicked={(ev: CustomEvent<string>) => navigate('/edit/' + ev.detail)}
+                                                    onEdit-clicked={(ev: CustomEvent<string>) => navigate('./edit/' + ev.detail)}
                                                     onAdd-clicked={() => navigate('./create')}></xkucharp-ambulance-employees-list>
         case "login":
           return <xkucharp-ambulance-login apiBase={this.apiBase}
