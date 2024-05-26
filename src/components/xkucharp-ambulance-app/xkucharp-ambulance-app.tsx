@@ -80,20 +80,20 @@ export class XkucharpAmbulanceApp {
         case "list":
           return <xkucharp-ambulance-employees-list apiBase={this.apiBase}
                                                     onEdit-clicked={(ev: CustomEvent<string>) => navigate('/edit/' + ev.detail)}
-                                                    onAdd-clicked={() => navigate('/create')}></xkucharp-ambulance-employees-list>
+                                                    onAdd-clicked={() => navigate('./create')}></xkucharp-ambulance-employees-list>
         case "login":
           return <xkucharp-ambulance-login apiBase={this.apiBase}
-                                           onLogged-in={(ev: CustomEvent<string>) => navigate('/edit/' + ev.detail)}></xkucharp-ambulance-login>
+                                           onLogged-in={(ev: CustomEvent<string>) => navigate('./edit/' + ev.detail)}></xkucharp-ambulance-login>
         case "create":
           return <xkucharp-ambulance-employee-create apiBase={this.apiBase}
-                                            onCreate-clicked={() => navigate('/list')}
-                                            onBack-clicked={() => navigate('/list')}></xkucharp-ambulance-employee-create>
+                                            onCreate-clicked={() => navigate('./list')}
+                                            onBack-clicked={() => navigate('./list')}></xkucharp-ambulance-employee-create>
         case "edit":
           return <xkucharp-ambulance-employee-edit apiBase={this.apiBase}
                                                    employeeId={editId}
                                                    operationType={this.operationType}
-                                                   onLogout-clicked={() => navigate('/login')}
-                                                   onBack-to-list-clicked={() => navigate('/list')}></xkucharp-ambulance-employee-edit>
+                                                   onLogout-clicked={() => navigate('./login')}
+                                                   onBack-to-list-clicked={() => navigate('./list')}></xkucharp-ambulance-employee-edit>
         default:
           return <div>Unknown element: {element}</div>
       }
